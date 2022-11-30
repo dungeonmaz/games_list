@@ -1,0 +1,88 @@
+@use '../../common/Colors.scss' as *;
+@use '../../common/Sizes.scss' as *;
+
+.gameDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding: 0 1rem;
+
+    .titleContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        h3 {
+            font-size: 24px;
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+
+        .rating {
+            background-color: map-get($secondary-color, main);
+            box-shadow: 0 0 5px 2px rgba($color: #000000, $alpha: 0.5);
+            color: $text-color;
+            display: flex;
+            flex-direction: column;
+            width: 10rem;
+            padding: $base-padding;
+            border-radius: $base-border-radius;
+
+            .ratings {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
+
+        .genres {
+            background-color: map-get($secondary-color, main);
+            box-shadow: 0 0 5px 2px rgba($color: #000000, $alpha: 0.5);
+            color: $text-color;
+            display: flex;
+            flex-direction: column;
+            width: 10rem;
+            padding: $base-padding;
+            border-radius: $base-border-radius;
+        }
+    }
+
+    .imageContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1rem 0;
+
+        img {
+            width: 30%;
+            height: 400px;
+            transition: 600ms ease all;
+            border-radius: $base-border-radius;
+            box-shadow: 0 0 5px 2px rgba($color: #000000, $alpha: 0.5);
+
+            @media (max-width: 1536px) {
+                width: 45%;
+            }
+
+            @media (max-width: 768px) {
+                width: 90%;
+            }
+
+            object-fit: cover
+        }
+    }
+
+}

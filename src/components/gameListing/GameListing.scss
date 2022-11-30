@@ -1,0 +1,32 @@
+@use '../../common/Colors.scss'as *;
+@use '../../common/Sizes.scss'as *;
+
+.gameListing {
+    display: flex;
+    flex-direction: column;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding: $base-padding;
+        align-items: center;
+        justify-content: center;
+
+        background-color: map-get($primary-color , main );
+
+        .btn {
+            width: 100%;
+        }
+    }
+}

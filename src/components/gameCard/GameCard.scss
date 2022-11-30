@@ -1,0 +1,64 @@
+@use '../../common/Colors.scss' as *;
+@use '../../common/Sizes.scss' as *;
+
+.gameCard {
+    background-color: rgba($color: transparent, $alpha: 0.1);
+    position: relative;
+    overflow: hidden;
+    border-radius: $base-border-radius;
+    box-shadow: 0 0 5px 2px rgba($color: #000000, $alpha: 0.5);
+    width: 30%;
+    height: 400px;
+    transition: 600ms ease all;
+
+    @media (max-width: 1536px) {
+        width: 45%;
+    }
+
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+
+
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover
+    }
+
+    &:hover {
+        scale: 1.02;
+        .inner {
+            height: 10rem;
+        }
+    }
+
+    .inner {
+        z-index: 100;
+        background-color: map-get($primary-color, main );
+        color: $text-color;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2rem;
+        padding: $base-padding;
+        transition: 600ms ease all;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        p {
+            font-size: 18px;
+        }
+
+        .genres {
+            display: flex;
+            gap: 0.1rem;
+            flex-direction: column;
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@use './common/Colors.scss' as *;
+@use './common/Sizes.scss' as *;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+    scroll-behavior: smooth;
+}
+
+.btn {
+    border: none;
+    border-radius: $base-border-radius;
+    padding: $base-padding * 2;
+    transition: 600ms ease all;
+    box-shadow: 0 0 3px 1px rgba($color: #000000, $alpha: 0.5);
+    background-color: map-get($secondary-color, main);
+    color: $text-color;
+    position: relative;
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background-color: map-get($secondary-color, main);;
+    }
+
+    &::after {
+        left: 0;
+    }
+
+    &:hover {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    &:hover::before, &:hover::after {
+        transition:800ms ease all;
+        width: 50%;
+    }
+
+    &:active {
+        transition:200ms ease all;
+        scale: 0.95;
+        transform: translate(0, -2px);
+    }
+}
