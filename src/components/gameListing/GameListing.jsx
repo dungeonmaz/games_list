@@ -5,9 +5,6 @@ import Loader from '../loader/Loader'
 import './GameListing.scss'
 
 
-const platforms = { "PC": 1, "PlayStation": 2, "Xbox": 3 }
-
-
 const GameListing = () => {
   const [data, setData] = useState()
 
