@@ -1,21 +1,34 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import GameCard from '../gameCard/GameCard'
+import { useNavigate } from 'react-router-dom'
 import Loader from '../loader/Loader'
+import GameContainer from './GameContainer'
 import './GameListing.scss'
-
 
 const GameListing = () => {
   const [data, setData] = useState()
+  const [page, setPage] = useState(1)
+  const navigate = useNavigate()
 
   useEffect(() => {
+    updateGames()
+  }, [page])
+
+  const updateGames = () => {
+    const link = window.location.pathname.slice(1)
+    let p = page
+    if(link) {
+      p = link.slice(5)
+      setPage(Number(p))
+    }
+    let axiosLink = `https://api.rawg.io/api/games?&page_size=12&key=937fe3e25014458abdead5445d62a7e3&page=${Number(p)}`
     const fetchGames = () => {
-      axios.get("https://api.rawg.io/api/games?page=1&page_size=12&key=937fe3e25014458abdead5445d62a7e3&parent_platforms=1")
+      axios.get(axiosLink)
         .then((res) => setData(res.data))
         .catch((err) => console.log(err))
     }
     fetchGames()
-  }, [])
+  }
 
   const handlePrev = () => {
     if (!data.previous) return
@@ -23,9 +36,8 @@ const GameListing = () => {
       top: 0,
       behavior: 'smooth'
     })
-    axios.get(data.previous)
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err))
+    setPage((prev) => prev - 1)
+    navigate(`/page=${page - 1 }`)
   }
 
   const handleNext = () => {
@@ -34,19 +46,14 @@ const GameListing = () => {
       top: 0,
       behavior: 'smooth'
     })
-    axios.get(data.next)
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err))
+    setPage((prev) => prev + 1)
+    navigate(`/page=${page + 1}`)
   }
 
   return data ?
     <div className='gameListing'>
-      <div className='container'>
-        {data.results.map(el => (
-          <GameCard key={el.slug} data={el} />
-        ))}
-      </div>
-      <div className='buttons'>
+      <GameContainer data={data}/>
+      <div className='buttons fixed-bottom'>
         <button className='btn' onClick={handlePrev} disabled={!data.previous}>Prev</button>
         <button className='btn' onClick={handleNext} disabled={!data.next}>Next</button>
       </div>

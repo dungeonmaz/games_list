@@ -13,6 +13,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<GameListing />} />
+          <Route path="/:params" element={<GameListing />} />
           <Route path="/game/:rawgId" element={<GameDetails />} />
         </Routes>
       </BrowserRouter>

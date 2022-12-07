@@ -8,6 +8,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     line-height: 20px;
+    text-shadow: 1px 1px 2px black;
 }
 
 html::-webkit-scrollbar {
@@ -54,4 +55,12 @@ html::-webkit-scrollbar {
         scale: 0.95;
         transform: translate(0, -2px);
     }
+}
+
+.fixed-bottom {
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

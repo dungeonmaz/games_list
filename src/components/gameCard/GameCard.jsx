@@ -14,14 +14,16 @@ const GameCard = ({ data }) => {
       <div className="inner">
         <h3>{data.name}</h3>
         <p>{data.released}</p>
-        <p className='rating'>Rating: {data.rating}</p>
-        <div className="genres">
-          {data.genres.map(el => (
-            <p key={el.id}>{el.name}</p>
-          ))}
+        <div className="hidden">
+          <p className='rating'>Rating: {data.rating}</p>
+          <div className="genres">
+            {data.genres.map(el => (
+              <p key={el.id}>{el.name}</p>
+            ))}
+          </div>
+          <div style={{ flex: 1 }}></div>
+          <button className='btn' onClick={handleClick}>Read more</button>
         </div>
-        <div style={{ flex: 1 }}></div>
-        <button className='btn' onClick={handleClick}>Read more</button>
       </div>
     </div>
   )

@@ -30,24 +30,34 @@
     &:hover {
         scale: 1.02;
         .inner {
-            height: 10rem;
+            background-color: map-get($primary-color, main );
+            .hidden{
+                display: block;
+            }
         }
     }
 
     .inner {
         z-index: 100;
-        background-color: map-get($primary-color, main );
+        background-color: transparent;
         color: $text-color;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        height: 2rem;
         padding: $base-padding;
         transition: 600ms ease all;
         display: flex;
         flex-direction: column;
         gap: 0.2rem;
+        height: fit-content;
+        .hidden {
+            display: none;
+            .btn {
+                width: 100%;
+            }
+        }
+
         p {
             font-size: 18px;
         }
