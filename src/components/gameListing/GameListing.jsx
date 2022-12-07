@@ -11,10 +11,6 @@ const GameListing = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    updateGames()
-  }, [page])
-
-  const updateGames = () => {
     const link = window.location.pathname.slice(1)
     let p = page
     if(link) {
@@ -28,7 +24,7 @@ const GameListing = () => {
         .catch((err) => console.log(err))
     }
     fetchGames()
-  }
+  }, [page])
 
   const handlePrev = () => {
     if (!data.previous) return
